@@ -5,3 +5,16 @@ invite link can be found [here](https://discord.com/oauth2/authorize?client_id=6
 
 ### 🌴 support
 join the support server: https://discord.gg/xr98QfX or add me `[smeks#0001]`
+
+### 🏗 installation / creating your own instance
+
+**prerequisites: node.js, mongodb, and yarn**
+
+```
+$ npm install yarn
+
+$ git clone https://github.com/smexay/lucid.git
+$ cd lucid
+$ yarn
+$ yarn start
+```
