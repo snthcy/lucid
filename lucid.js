@@ -28,6 +28,7 @@ class Lucid extends Discord.Client {
         this.log = require('./utils/logger')
         this.commands = new Discord.Collection()
         this.cooldown = new Discord.Collection()
+        this.config = config
         let ready = false
 
         // const Guild = require('./models/guild')
@@ -51,17 +52,17 @@ class Lucid extends Discord.Client {
                 url: "https://www.twitch.tv/monstercat"
             });
 
-            // mongoose.connect(this.config.mongoURL, {
-            //     useNewUrlParser: true,
-            //     useUnifiedTopology: true,
-            //     autoIndex: false,
-            //     family: 4
-            // });
+            mongoose.connect(this.config.mongoURL, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                autoIndex: false,
+                family: 4
+            });
 
             // waiting on top.gg to approve the bot
             this.on("guildCreate", async (guild) => {
                 this.log.logger.info(`joined a new guild ${guild.name}. new count: ${this.guilds.cache.size}`)
-                
+
                 // await statsPost(client.guilds.cache.size)
                 // this.log.logger.info(`guild count posted to top.gg: ${client.guilds.cache.size}`)
             })
