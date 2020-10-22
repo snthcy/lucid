@@ -8,7 +8,7 @@ join the support server: https://discord.gg/xr98QfX or add me `[smeks#0001]`
 
 ### 🏗 installation / creating your own instance
 
-**prerequisites: node.js, mongodb, and yarn**
+**prerequisites: git, node.js, mongodb, and yarn**
 
 ```
 $ npm install yarn
