@@ -18,3 +18,5 @@ rename .env.example to .env and populate data
 $ yarn
 $ yarn start
 ```
+
+credits: classes for embed and command - max#0777
