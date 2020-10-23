@@ -10,13 +10,13 @@ const { MessageEmbed, GuildMember } = require("discord.js")
 const { getColor } = require("../utils/utils")
 
 // custom embed
-exports.embed = class {
+exports.Embed = class {
 
     constructor(member, footer, text) {
         this.embed = new MessageEmbed()
 
         if (member) {
-            this.embed.setColor('fffff')
+            this.embed.setColor('c173ff')
         }
 
         if (text) {
@@ -85,7 +85,7 @@ exports.embed = class {
 }
 
 // error embed
-exports.errorEmbed = class {
+exports.ErrorEmbed = class {
 
     constructor(text) {
 

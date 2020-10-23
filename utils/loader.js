@@ -7,8 +7,8 @@
 */
 
 const fs = require("fs");
-let { command, categories } = require("../classes/command")
-const { embed } = require("../classes/embed");
+let { command, categories } = require("../classes/Command")
+const { embed } = require("../classes/Embed");
 const log = require('./logger')
 const color = require('color')
 

@@ -6,12 +6,11 @@
 /_____/\__,_/\___/_/\__,_/   (c) 2020 smexay. Subject to the AGPLv3 license.
 */
 
-const { command, categories } = require("../classes/command");
+const { Command, categories } = require("../classes/Command");
 const { getMember } = require("../utils/utils");
-const { errorEmbed, embed } = require("../classes/embed")
+const { ErrorEmbed, Embed } = require("../classes/Embed")
 
-const avatar = new command("avatar", "get a users avatar", categories.INFO)
-avatar.setAliases(["av"])
+const avatar = new Command("avatar", "get a users avatar", categories.INFO).setAliases(["av"])
 
 async function run(message, args)  {
 
@@ -28,10 +27,10 @@ async function run(message, args)  {
     }
 
     if (!member) {
-        return message.channel.send(new errorEmbed("invalid user"));
+        return message.channel.send(new ErrorEmbed("invalid user"));
     }
 
-    const embedav = new embed(member, false)
+    const embedav = new Embed(member, false)
         .setTitle(member.user.tag)
         .setImage(member.user.displayAvatarURL({ dynamic: true, size: 256 }))
         .setDescription(`[\`png\`](${member.user.avatarURL({ format: 'png', size: 2048 })}) | [\`jpg\`](${member.user.avatarURL({ format: 'jpg', size: 2048 })})  | [\`gif\`](${member.user.avatarURL({ format: 'gif', size: 2048 })}) | [\`webp\`](${member.user.avatarURL({ format: 'webp', size: 2048 })})`, true)
@@ -40,5 +39,4 @@ async function run(message, args)  {
 }
 
 avatar.setRun(run)
-
 module.exports = avatar

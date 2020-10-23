@@ -10,11 +10,10 @@
 // L I B R A R I E S
 const mongoose = require('mongoose')
 const colors = require('colors')
-// const config = require("./config.json");
-const version = require('./package.json')
+// const config = require("./config.json"); uncomment this
+const version = require('./version.json')
+const dotenv = require('dotenv').config();
 const { runCommand, loader } = require("./utils/loader")
-
-// I N T E G R A T I O N S
 const Discord = require('discord.js')
 
 // I N I T I L I Z A T I O N
@@ -28,7 +27,7 @@ class Lucid extends Discord.Client {
         this.log = require('./utils/logger')
         this.commands = new Discord.Collection()
         this.cooldown = new Discord.Collection()
-        this.config = config
+        // this.config = config uncomment this
         let ready = false
 
         // const Guild = require('./models/guild')
@@ -47,17 +46,17 @@ class Lucid extends Discord.Client {
             this.log.logger.ready("logged in as " + this.user.tag.magenta);
             this.log.logger.info(`serving ${memberCount.toLocaleString().magenta} kids in ${this.guilds.cache.size.toLocaleString().magenta} guilds`)
 
-            this.user.setActivity(`@lucid help | v${version.version}`, {
+            this.user.setActivity(`@lucid help | v${version.number}`, {
                 type: "STREAMING",
                 url: "https://www.twitch.tv/monstercat"
             });
 
-            mongoose.connect(this.config.mongoURL, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                autoIndex: false,
-                family: 4
-            });
+            // mongoose.connect(this.config.mongoURL, {
+            //     useNewUrlParser: true,
+            //     useUnifiedTopology: true,
+            //     autoIndex: false,
+            //     family: 4
+            // });
 
             // waiting on top.gg to approve the bot
             this.on("guildCreate", async (guild) => {
@@ -97,7 +96,7 @@ class Lucid extends Discord.Client {
         })
 
         setTimeout(() => {
-            this.login('NzA1NTIyMzQwMTU0MzEwNzE2.Xqs64Q.wmUinySOSNqLI5kDMHpAyo9kvI4').then(() => {
+            this.login(process.env.TOKEN).then(() => {
                 setTimeout(() => {
                     ready = true
                 }, 2000)

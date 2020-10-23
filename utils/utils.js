@@ -10,20 +10,18 @@
 // const dbl = new DBL(topgg)
 const mongoose = require('mongoose')
 
+
 // async function statsPost (guildCount) {
 //     return await dbl.postStats(guildCount)
 // }
 
-// exports.statsPost = statsPost
-
-
-function randomFromArray (array) {
+function randomFromArray(array) {
   if (Array.isArray(array)) {
     return array[Math.floor(Math.random() * array.length)]
   }
 }
 
+
+
 exports.randomFromArray = randomFromArray
-
-
-
+// exports.statsPost = statsPost

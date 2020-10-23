@@ -6,8 +6,8 @@
 /_____/\__,_/\___/_/\__,_/   (c) 2020 smexay. Subject to the AGPLv3 license.
 */
 
-exports.command = class {
-
+exports.Command = class {
+    
     constructor(name, description, category, permissions, aliases, run) {
         this.name = name.toString()
         this.description = description.toString()

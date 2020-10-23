@@ -6,8 +6,9 @@
 /_____/\__,_/\___/_/\__,_/   (c) 2020 smexay. Subject to the AGPLv3 license.
 */
 
-const { command, categories } = require("../classes/command")
-const { embed, errorEmbed } = require("../classes/embed")
+const { Command, categories } = require("../classes/Command")
+const { Embed, ErrorEmbed } = require("../classes/Embed")
+const { randomFromArray } = require("../utils/utils")
 
 const answers = ["as i see it, yes",
     "ask again later",
@@ -32,15 +33,15 @@ const answers = ["as i see it, yes",
 
 const cooldown = new Map()
 
-const cmd = new command("8ball", "ask the 8ball a question", categories.FUN)
+const eightball = new Command("8ball", "ask the 8ball a question", categories.FUN)
 
 async function run(message, args) {
 
     if (cooldown.has(message.member.id)) {
         const init = cooldown.get(message.member.id)
-        const curr = new Date()
-        const diff = Math.round((curr - init) / 1000)
-        const time = 5 - diff
+        const current = new Date()
+        const difference = Math.round((current - init) / 1000)
+        const time = 5 - difference
 
         const minutes = Math.floor(time / 60)
         const seconds = time - minutes * 60
@@ -52,12 +53,10 @@ async function run(message, args) {
         } else {
             remaining = `${seconds}s`
         }
-
-        return message.channel.send(new errorEmbed(`you are still on cooldown for \`${remaining}\``));
+        return message.channel.send(new ErrorEmbed(`you are still on cooldown for \`${remaining}\``));
     }
-
     if (args.length == 0) {
-        return message.channel.send(new errorEmbed("you must ask the 8ball something"))
+        return message.channel.send(new ErrorEmbed("you must ask the 8ball something"))
     }
 
     cooldown.set(message.member.id, new Date());
@@ -68,11 +67,10 @@ async function run(message, args) {
 
     const question = args.join(" ")
 
-    const embed8ball = new embed(message.member, false, `**${question}** - ${message.member.user.toString()}\n\n🎱 ${answers[Math.floor(Math.random() * answers.length)]}`)
-        
+    const embed8ball = new Embed(message.member, false, `**${question}** - ${message.member.user.toString()}\n\n🎱 ${randomFromArray(answers)}`)
+
     message.channel.send(embed8ball)
 }
 
-cmd.setRun(run)
-
-module.exports = cmd
+eightball.setRun(run)
+module.exports = eightball
