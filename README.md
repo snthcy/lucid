@@ -15,7 +15,7 @@ $ npm install yarn
 
 $ git clone https://github.com/smexay/lucid.git
 $ cd lucid
-rename config.example.js to config.js and populate data
+rename .env.example to .env and populate data
 $ yarn
 $ yarn start
 ```
