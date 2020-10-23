@@ -12,7 +12,6 @@ join the support server: https://discord.gg/xr98QfX or add me `[smeks#0001]`
 
 ```
 $ npm install yarn
-
 $ git clone https://github.com/smexay/lucid.git
 $ cd lucid
 rename .env.example to .env and populate data
