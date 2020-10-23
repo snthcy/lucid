@@ -4,7 +4,7 @@
 invite link can be found [here](https://discord.com/oauth2/authorize?client_id=603372166607667200&permissions=1544027255&scope=bot)
 
 ### 🌴 support
-join the support server: https://discord.gg/xr98QfX or add me `[smeks#0001]`
+join the support server: https://discord.gg/xr98QfX or add me `[smeks#0001 | 722930349276921888]`
 
 ### 🏗 installation / creating your own instance
 
@@ -12,10 +12,9 @@ join the support server: https://discord.gg/xr98QfX or add me `[smeks#0001]`
 
 ```
 $ npm install yarn
-
 $ git clone https://github.com/smexay/lucid.git
 $ cd lucid
-rename config.example.js to config.js and populate data
+rename .env.example to .env and populate data
 $ yarn
 $ yarn start
 ```
